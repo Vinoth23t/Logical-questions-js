@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-9">
+        <h3>Count Word Occurrences</h3>
+        <label for="textInput">Enter a sentence:</label>
+        <input type="text" id="textInput" placeholder="Enter a sentence">
+        <button id="countBtn">Count</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function countWordOccurrences() {
+            let textInput = document.querySelector("#textInput").value;
+            let words = textInput.split(" ");
+            let wordCount = {};
+
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                if (wordCount[word] === undefined) {
+                    wordCount[word] = 1;
+                } else {
+                    wordCount[word]++;
+                }
+            }
+
+            let resultHTML = "";
+            for (const word in wordCount) {
+                resultHTML += `${word}: ${wordCount[word]}<br>`;
+            }
+
+            let resultElement = document.querySelector("#result");
+            resultElement.innerHTML = resultHTML;
+        }
+
+        let countBtn = document.querySelector("#countBtn");
+        countBtn.addEventListener("click", countWordOccurrences);
+    </script>
+</body>
+</html>
