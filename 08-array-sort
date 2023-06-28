@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-8">
+        <h3>Sort Array in Ascending Order</h3>
+        <label for="arrayInput">Enter numbers separated by commas:</label>
+        <input type="text" id="arrayInput" placeholder="Enter numbers">
+        <button id="sortBtn">Sort</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function sortArrayAscending() {
+          let arrayInput = document.querySelector("#arrayInput").value;
+          let numbers = arrayInput.split(",").map(Number);
+
+          // Check if the input is valid
+          if (numbers.some(isNaN)) {
+            document.querySelector("#result").textContent = "Invalid input. Please enter numbers separated by commas.";
+            return;
+          }
+
+          let sortedArray = numbers.sort((a, b) => a - b);
+          document.querySelector("#result").textContent = "Sorted Array: " + sortedArray.join(", ");
+        }
+
+        let sortBtn = document.querySelector("#sortBtn");
+        sortBtn.addEventListener("click", sortArrayAscending);
+    </script>
+</body>
+</html>
