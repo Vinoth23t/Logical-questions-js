@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+    <style>
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="question-2">
+        <h3>Find Maximum Element in an Array</h3>
+        <label for="arrayInput">Enter Array:</label>
+        <input type="text" id="arrayInput" placeholder="e.g., 5, 2, 9, 1, 7">
+        <button id="findMaxBtn">Find Maximum</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+       
+
+        let findMaxBtn = document.querySelector("#findMaxBtn");
+        let resultDiv = document.querySelector("#result");
+
+        function findMaxElement(arr) {
+            if (arr.length === 0) {
+                return undefined; // return undefined if the array is empty
+            }
+
+            let max = arr[0]; // sssume the first element as the maximum
+
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i]; // Update max if a larger element is found
+                }
+            }
+
+            return max;
+        }
+
+        findMaxBtn.addEventListener("click", function() {
+            let arrayInput = document.querySelector("#arrayInput").value;
+            let inputArray = arrayInput.split(",").map(Number);
+            let maxElement = findMaxElement(inputArray);
+            resultDiv.textContent = maxElement ? `The maximum element in the array is: ${maxElement}` : "The array is empty.";
+        });
+    </script>
+</body>
+</html>

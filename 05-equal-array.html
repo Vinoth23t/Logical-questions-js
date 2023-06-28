@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-5">
+        <h3>Check if Arrays are Equal</h3>
+        <label for="array1Input">Enter Array 1:</label>
+        <input type="text" id="array1Input" placeholder="e.g., 1, 2, 3">
+        <label for="array2Input">Enter Array 2:</label>
+        <input type="text" id="array2Input" placeholder="e.g., 1, 2, 3">
+        <button id="checkBtn">Check Equality</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function areArraysEqual(arr1, arr2) {
+            if (arr1.length !== arr2.length) {
+                return false; // If the arrays have different lengths, they can't be equal
+            }
+
+            return arr1.every((element, index) => element === arr2[index]);
+        }
+
+        let checkBtn = document.querySelector("#checkBtn");
+        let resultDiv = document.querySelector("#result");
+
+        checkBtn.addEventListener("click", function() {
+            let array1Input = document.querySelector("#array1Input").value;
+            let array2Input = document.querySelector("#array2Input").value;
+
+            let array1 = array1Input.split(",").map(Number);
+            let array2 = array2Input.split(",").map(Number);
+
+            let equal = areArraysEqual(array1, array2);
+
+            if (equal) {
+                resultDiv.textContent = "The arrays are equal.";
+            } else {
+                resultDiv.textContent = "The arrays are not equal.";
+            }
+        });
+    </script>
+</body>
+</html>

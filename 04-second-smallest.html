@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-4">
+        <h3>Find Second Smallest Element</h3>
+        <label for="arrayInput">Enter Array:</label>
+        <input type="text" id="arrayInput" placeholder="e.g., 5, 2, 9, 1, 7">
+        <button id="findBtn">Find Second Smallest</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+       
+
+        let findBtn = document.querySelector("#findBtn");
+        let resultDiv = document.querySelector("#result");
+
+
+        function findSecondSmallest(arr) {
+            if (arr.length < 2) {
+                return undefined; // Return undefined if the array has less than 2 elements
+            }
+
+            const sortedArray = arr.sort((a, b) => a - b);
+            return sortedArray[1]; // Return the element at index 1 (second smallest)
+        }
+
+        findBtn.addEventListener("click", function() {
+            let arrayInput = document.querySelector("#arrayInput").value;
+            let inputArray = arrayInput.split(",").map(Number);
+            let secondSmallest = findSecondSmallest(inputArray);
+
+            if (secondSmallest === undefined) {
+                resultDiv.textContent = "No second smallest element found.";
+            } else {
+                resultDiv.textContent = `The second smallest element is: ${secondSmallest}`;
+            }
+        });
+    </script>
+</body>
+</html>
