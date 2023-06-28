@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-1">
+        <h3>Calculate Factorial of a given Number</h3>
+        <label for="Factorial" name="factorial" id="factorial">Find Factorial:</label>
+        <input type="number" name="userInput" id="userInput" placeholder="enter the number"/>
+        <button id="find" onclick="calculateFactorial()">Find</button>
+    </div>
+    <script>
+        function calculateFactorial() {
+            let inputValue = parseInt(document.querySelector("#userInput").value);
+            
+            function factorial(num){
+                if (num === 0 || num === 1){
+                    return 1;
+                }
+                let result = 1;
+                for (let i = 2; i <= num; i++){
+                    result *= i;
+                }
+                return result;   
+            }
+
+            // Check if the given num is negative or non-negative
+            if (isNaN(inputValue) || inputValue < 0) {
+                document.write("Invalid input. Please enter a non-negative integer.");
+            } else {
+                const factorialResult = factorial(inputValue);
+                document.write(`The factorial of ${inputValue} is: ${factorialResult}`);
+            }
+        }
+    </script>
+</body>
+</html>
