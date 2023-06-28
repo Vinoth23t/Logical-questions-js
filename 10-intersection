@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Logical questions">
+    <title>Logical Questions</title>
+</head>
+<body>
+    <div class="question-1">
+        <h3>Find Intersection of Arrays</h3>
+        <label for="array1Input">Enter values for Array 1:</label>
+        <input type="text" id="array1Input" placeholder="Enter values for Array 1">
+        <label for="array2Input">Enter values for Array 2:</label>
+        <input type="text" id="array2Input" placeholder="Enter values for Array 2">
+        <button id="intersectionBtn">Find Intersection</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function findIntersection() {
+            let array1Input = document.querySelector("#array1Input").value;
+            let array2Input = document.querySelector("#array2Input").value;
+
+            let arr1 = array1Input.split(",").map(Number);
+            let arr2 = array2Input.split(",").map(Number);
+
+            let set1 = new Set(arr1);
+            let set2 = new Set(arr2);
+            let intersection = [];
+
+            for (const num of set1) {
+                if (set2.has(num)) {
+                    intersection.push(num);
+                }
+            }
+
+            let resultElement = document.querySelector("#result");
+            resultElement.textContent = "Intersection: " + intersection.join(", ");
+        }
+
+        let intersectionBtn = document.querySelector("#intersectionBtn");
+        intersectionBtn.addEventListener("click", findIntersection);
+    </script>
+</body>
+</html>
